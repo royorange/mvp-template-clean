@@ -1,0 +1,101 @@
+
+ext {
+    nodeModulesPath = '../rn/node_modules'
+    react=[
+            root: "../rn/",
+            nodeExecutableAndArgs : ["/usr/local/bin/node"]
+    ]
+    daggerVersion = '2.11'
+    supportVersion = '26.1.0'
+    supportLibaryVersion = '25.3.1'
+    rxJavaVersion = '2.0.2'
+    rxAndroidVersion = '2.0.1'
+    javaxAnnotationVersion = '1.0'
+    glideVersion = '3.7.0'
+    retrofitVersion = '2.1.0'
+    multidexVersion = '1.0.1'
+    gsonVersion = '2.3.1'
+    getuiVersion = '2.10.2.0'
+    rxbindingVersion = '2.0.0'
+    logging_interceptorVersion = '3.4.1'
+    zxing_version = '3.3.0'
+    permission_version = '3.0.1'
+    baseRecyclerViewAdapter_version='2.9.28'
+    kotlin_version = '1.1.51'
+    guava_version = '22.0-android'
+    presentationDependencies = [
+            daggerCompiler:             "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger:                     "com.google.dagger:dagger:${daggerVersion}",
+            daggerAndroid:              "com.google.dagger:dagger-android:${daggerVersion}",
+            daggerAndroidSupport:       "com.google.dagger:dagger-android-support:${daggerVersion}",
+            daggerAndroidProcessor:     "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            rxJava:                     "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid:                  "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation:            "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            supportV4:                  "com.android.support:support-v4:${supportLibaryVersion}",
+            appcompatV7:                "com.android.support:appcompat-v7:${supportLibaryVersion}",
+            annotations:                "com.android.support:support-annotations:${supportVersion}",
+            design:                     "com.android.support:design:${supportVersion}",
+            wxpay:                      "com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+",
+            glide:                      "com.github.bumptech.glide:glide:${glideVersion}",
+            glideTransformations:       "jp.wasabeef:glide-transformations:2.0.1",
+            retrofit:                   "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofit2Gson:              "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofit2Adapter:           "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+            multidex:                   "com.android.support:multidex:${multidexVersion}",
+            gson:                       "com.google.code.gson:gson:${gsonVersion}",
+            push:                       "com.getui:sdk:${getuiVersion}",
+            rxbinding:                  "com.jakewharton.rxbinding2:rxbinding:${rxbindingVersion}",
+            pinyin4j:                   "com.belerweb:pinyin4j:2.5.1",
+            okhttpLoggingInterceptor:   "com.squareup.okhttp3:logging-interceptor:${logging_interceptorVersion}",
+            zxing:                      "com.google.zxing:core:${zxing_version}",
+            permission:                 "com.github.hotchemi:permissionsdispatcher:${permission_version}",
+            permissionProcessor:        "com.github.hotchemi:permissionsdispatcher-processor:${permission_version}",
+            reactNative:                "com.facebook.react:react-native:+",
+            guava:                      "com.google.guava:guava:${guava_version}"
+    ]
+
+    dbflow_version = "4.2.4"
+    gtm_version = '9.2.1'
+    dataDependencies = [
+            dataBaseCore:       "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}",
+            dataBase:           "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}",
+            processor:          "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}",
+            gtm:                "com.google.android.gms:play-services-tagmanager:${gtm_version}",
+            baiduAnalytics:     "com.baidu.mobstat:mtj-sdk:latest.integration"
+    ]
+
+    flexbox_version = "0.3.2"
+    circularReveal_version = "2.0.1"
+    rebound_version = "0.3.8"
+    emoji_version = "1.0.0"
+    materialdialog_version = "0.8.6.2"
+    materialDesignLibrary_version = "1.6"
+    constraint_layout_version='1.0.2'
+    uiDependencies = [
+            flexbox:                "com.google.android:flexbox:${flexbox_version}",
+            cardview:               "com.android.support:cardview-v7:${supportVersion}",
+            snackBar:               "com.github.SwiftyWang:TopToastBar:1.1.4",
+            circularreveal:         "com.github.ozodrukh:CircularReveal:${circularReveal_version}@aar",
+            rebound:                "com.facebook.rebound:rebound:${rebound_version}",
+            emoji:                  "com.github.w446108264:AndroidEmoji:${emoji_version}",
+            materialDialogs:        "com.afollestad.material-dialogs:core:${materialdialog_version}",
+            pickerview:             "com.bigkoo:pickerview:2.0.8",
+            activityTransition:     "com.kogitune:pre-lollipop-activity-transition:1.3.0",
+            materialDesignLibrary:  "com.github.vajro:MaterialDesignLibrary:${materialDesignLibrary_version}",
+            downloadProgressBar:    "com.github.panwrona:DownloadProgressBar:1.1",
+            swipeRecyclerview:      "com.yanzhenjie:recyclerview-swipe:1.0.2",
+            recyclerviewAnimators:  "jp.wasabeef:recyclerview-animators:2.2.5",
+            topsnackbar:            "com.androidadvance:topsnackbar:1.1.1",
+            flowlayout:             "com.hyman:flowlayout-lib:1.1.2",
+            shapeImageview:         "com.github.siyamed:android-shape-imageview:0.9.+@aar",
+            expandableLayout:       'com.github.aakira:expandable-layout:1.6.0@aar',
+            recyclerView:           "com.android.support:recyclerview-v7:${supportVersion}",
+            constraintLayout:       "com.android.support.constraint:constraint-layout:${constraint_layout_version}",
+            baseRecyclerViewAdapter:    "com.github.CymChad:BaseRecyclerViewAdapterHelper:${baseRecyclerViewAdapter_version}"
+    ]
+
+    pluginDependencies = [
+            kotlinPlugin:       "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+    ]
+}
