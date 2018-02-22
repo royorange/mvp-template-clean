@@ -8,5 +8,4 @@ import android.databinding.ViewDataBinding;
 
 public abstract class PureActivity<T extends ViewDataBinding> extends BaseActivity<CommonPresenter,T> {
 
-
 }

@@ -2,6 +2,7 @@ package com.roy.app.mvptemplate.presentation.di.component;
 
 import android.app.Application;
 
+import com.roy.app.mvptemplate.data.cache.CacheManager;
 import com.roy.app.mvptemplate.presentation.MainApplication;
 import com.roy.app.mvptemplate.presentation.di.module.ActivityBindingModule;
 import com.roy.app.mvptemplate.presentation.di.module.ApplicationModule;
@@ -22,6 +23,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         ActivityBindingModule.class,
         AndroidSupportInjectionModule.class})
 public interface AppComponent extends AndroidInjector<MainApplication> {
+
+    CacheManager getCacheManager();
 
     @Component.Builder
     interface Builder {

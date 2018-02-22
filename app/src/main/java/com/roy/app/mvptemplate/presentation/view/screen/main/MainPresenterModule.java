@@ -27,7 +27,7 @@ public abstract class MainPresenterModule {
     @Provides
     @ActivityScoped
     @Named("title")
-    static String provideText(){
-        return "royorange";
+    static String provideText(MainActivity activity){
+        return activity.getIntent().getStringExtra(MainActivity.EXTRA_TITLE);
     }
 }

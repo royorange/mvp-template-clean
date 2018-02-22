@@ -41,6 +41,7 @@ public abstract class BaseFragment<P extends BasePresenter,T extends ViewDataBin
         mBinding = DataBindingUtil.inflate(inflater,getContentViewId(),container,false);
         if(presenter!=null){
             presenter.takeView(this);
+            Log.i("shijc","BaseFragment,onCreateView presenter:"+presenter);
         }
         return mBinding.getRoot();
     }
@@ -49,7 +50,6 @@ public abstract class BaseFragment<P extends BasePresenter,T extends ViewDataBin
     public void onResume() {
         super.onResume();
         if(presenter!=null){
-            Log.i("shijc","BaseFragment,presenter:"+presenter);
             presenter.takeView(this);
         }
     }

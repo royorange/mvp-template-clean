@@ -1,6 +1,7 @@
 package com.roy.app.mvptemplate.presentation.di.module;
 
 import com.roy.app.mvptemplate.presentation.di.scope.ActivityScoped;
+import com.roy.app.mvptemplate.presentation.view.screen.SplashActivity;
 import com.roy.app.mvptemplate.presentation.view.screen.main.MainActivity;
 import com.roy.app.mvptemplate.presentation.view.screen.main.MainPresenterModule;
 
@@ -22,4 +23,8 @@ public abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector (modules = MainPresenterModule.class)
     abstract MainActivity mainActivity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract SplashActivity splashActivityActivity();
 }
