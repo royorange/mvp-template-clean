@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+        flavorDimensions "sweet"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,6 +39,15 @@ android {
         pickFirst 'AndroidManifest.xml'
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
+
+    productFlavors {
+        dev{
+            buildConfigField "boolean", "APP_DEBUG", "true"
+        }
+        home{
+            buildConfigField "boolean", "APP_DEBUG", "false"
+        }
+    }
 }
 
 dependencies {
@@ -57,6 +67,7 @@ dependencies {
     implementation presentationDependencies.annotations
     implementation presentationDependencies.rxJava
     implementation presentationDependencies.rxAndroid
+//    implementation presentationDependencies.rxAndroid2
     implementation presentationDependencies.guava
     implementation presentationDependencies.multidex
 //    annotationProcessor presentationDependencies.javaxAnnotation
@@ -92,4 +103,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 }

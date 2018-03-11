@@ -4,10 +4,9 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.roy.app.mvptemplate.R;
-import com.roy.app.mvptemplate.databinding.ActivitySplashBinding;
 import com.roy.app.mvptemplate.presentation.view.base.PureActivity;
 
-public class SplashActivity extends PureActivity<ActivitySplashBinding> {
+public class SplashActivity extends PureActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

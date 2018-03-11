@@ -12,7 +12,7 @@ ext {
     rxAndroidVersion = '2.0.1'
     javaxAnnotationVersion = '1.0'
     glideVersion = '3.7.0'
-    retrofitVersion = '2.1.0'
+    retrofitVersion = '2.3.0'
     multidexVersion = '1.0.1'
     gsonVersion = '2.3.1'
     getuiVersion = '2.10.2.0'
@@ -41,12 +41,11 @@ ext {
             glideTransformations:       "jp.wasabeef:glide-transformations:2.0.1",
             retrofit:                   "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             retrofit2Gson:              "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-            retrofit2Adapter:           "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+            retrofit2Adapter:           "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
             multidex:                   "com.android.support:multidex:${multidexVersion}",
             gson:                       "com.google.code.gson:gson:${gsonVersion}",
             push:                       "com.getui:sdk:${getuiVersion}",
             rxbinding:                  "com.jakewharton.rxbinding2:rxbinding:${rxbindingVersion}",
-            pinyin4j:                   "com.belerweb:pinyin4j:2.5.1",
             okhttpLoggingInterceptor:   "com.squareup.okhttp3:logging-interceptor:${logging_interceptorVersion}",
             zxing:                      "com.google.zxing:core:${zxing_version}",
             permission:                 "com.github.hotchemi:permissionsdispatcher:${permission_version}",

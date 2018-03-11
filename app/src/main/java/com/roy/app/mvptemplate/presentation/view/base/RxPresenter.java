@@ -12,11 +12,12 @@ import io.reactivex.disposables.Disposable;
 public class RxPresenter<T extends BaseView> extends PresenterImpl<T> {
     private CompositeDisposable mCompositeDisposable;
 
-    protected void addSubscribe(Disposable subscription) {
+
+    protected void addDisposable(Disposable observable) {
         if (mCompositeDisposable == null) {
             mCompositeDisposable = new CompositeDisposable();
         }
-        mCompositeDisposable.add(subscription);
+        mCompositeDisposable.add(observable);
     }
 
     private void unSubscribe() {

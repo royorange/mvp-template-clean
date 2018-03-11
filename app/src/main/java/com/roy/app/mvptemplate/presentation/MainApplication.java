@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.roy.app.mvptemplate.presentation.di.component.DaggerAppComponent;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
@@ -13,6 +15,7 @@ import dagger.android.DaggerApplication;
  */
 
 public class MainApplication extends DaggerApplication {
+    private RefWatcher refWatcher;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -23,5 +26,22 @@ public class MainApplication extends DaggerApplication {
     @Override
     protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
         return DaggerAppComponent.builder().application(this).build();
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        refWatcher= setupLeakCanary();
+    }
+
+    private RefWatcher setupLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return RefWatcher.DISABLED;
+        }
+        return LeakCanary.install(this);
+    }
+
+    public RefWatcher getRefWatcher() {
+        return refWatcher;
     }
 }

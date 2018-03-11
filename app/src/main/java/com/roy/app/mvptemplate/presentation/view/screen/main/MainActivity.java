@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.roy.app.mvptemplate.R;
-import com.roy.app.mvptemplate.databinding.ActivityMainBinding;
+import com.roy.app.mvptemplate.presentation.MainApplication;
 import com.roy.app.mvptemplate.presentation.view.base.PureActivity;
 
 import javax.inject.Inject;
@@ -15,7 +15,7 @@ import javax.inject.Inject;
  * Created by Roy on 2018/2/18.
  */
 
-public class MainActivity extends PureActivity<ActivityMainBinding>{
+public class MainActivity extends PureActivity{
     public static final String EXTRA_TITLE = "extra_title";
 
     public static Intent getCallingIntent(Context context,String content) {
@@ -39,4 +39,9 @@ public class MainActivity extends PureActivity<ActivityMainBinding>{
         addFragment(getSupportFragmentManager(),fragment,R.id.container);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ((MainApplication)getApplication()).getRefWatcher().watch(this);
+    }
 }

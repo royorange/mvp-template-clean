@@ -2,9 +2,19 @@ package com.roy.app.mvptemplate.presentation.di.module;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.roy.app.mvptemplate.data.LocalConfig;
+import com.roy.app.mvptemplate.data.executor.JobExecutor;
+import com.roy.app.mvptemplate.data.executor.PostExecutionThread;
+import com.roy.app.mvptemplate.data.executor.ThreadExecutor;
+import com.roy.app.mvptemplate.data.network.CookieStore;
+import com.roy.app.mvptemplate.data.network.SharedPreferencesCookieStore;
+import com.roy.app.mvptemplate.presentation.executor.UIThread;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.Provides;
 
 /**
  * Created by Roy on 2018/2/18.
@@ -23,4 +33,25 @@ public abstract class ApplicationModule {
     //expose Application as an injectable context
     @Binds
     abstract Context bindContext(Application application);
+
+    @Binds
+    abstract ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor);
+
+    @Binds
+    abstract PostExecutionThread providePostExecutionThread(UIThread uiThread);
+
+
+    @Provides
+    static LocalConfig provideLocalConfig(Application application){
+        return LocalConfig.loadConfig(application);
+    }
+
+    @Provides
+    static SharedPreferences provideSharedPreference(LocalConfig config){
+        return config.getSharedPreference();
+    }
+
+    @Binds
+    abstract CookieStore provideSharedPreferencesCookieStore(SharedPreferencesCookieStore cookieStore);
+
 }

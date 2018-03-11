@@ -61,6 +61,6 @@ public class MainFragment extends BaseFragment<MainContract.Presenter,FragmentMa
 
     @Override
     public void setText(String text) {
-        mBinding.text.setText(mParamText);
+        mBinding.text.setText(text);
     }
 }

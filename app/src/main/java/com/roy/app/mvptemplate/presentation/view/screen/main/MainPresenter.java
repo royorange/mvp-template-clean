@@ -1,6 +1,11 @@
 package com.roy.app.mvptemplate.presentation.view.screen.main;
 
 import com.roy.app.mvptemplate.data.cache.CacheManager;
+import com.roy.app.mvptemplate.data.network.NetParam;
+import com.roy.app.mvptemplate.domain.interactor.PostQueryUpdateInfo;
+import com.roy.app.mvptemplate.domain.model.NetResponse;
+import com.roy.app.mvptemplate.domain.model.UpdateInfo;
+import com.roy.app.mvptemplate.presentation.view.base.PresenterSingleObserver;
 import com.roy.app.mvptemplate.presentation.view.base.RxPresenter;
 
 import javax.inject.Inject;
@@ -12,6 +17,9 @@ import javax.inject.Inject;
 public class MainPresenter extends RxPresenter<MainContract.View> implements MainContract.Presenter{
 
     @Inject
+    PostQueryUpdateInfo getVersion;
+
+    @Inject
     CacheManager config;
 
     @Inject
@@ -20,7 +28,14 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
 
     @Override
     public void startTask() {
-        getView().setText(config.getUserId());
+        getVersion.execute(new PresenterSingleObserver<NetResponse<UpdateInfo>>(this){
+            @Override
+            public void onSuccess(NetResponse<UpdateInfo> value) {
+                getView().setText(value.getBody().getUpText());
+            }
+        },new NetParam().addParam("locationLabel", "APP:VERSION:CHECK:ANDROID").addParam("memberGroupId", 0));
     }
+
+
 
 }
