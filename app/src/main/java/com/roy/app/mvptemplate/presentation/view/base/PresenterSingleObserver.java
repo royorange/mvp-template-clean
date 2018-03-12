@@ -27,6 +27,4 @@ public class PresenterSingleObserver<T> extends ResourceSingleObserver<T> {
         presenter = null;
     }
 
-
-
 }

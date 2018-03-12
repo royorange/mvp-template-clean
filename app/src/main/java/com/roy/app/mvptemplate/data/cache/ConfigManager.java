@@ -17,12 +17,12 @@ import javax.inject.Singleton;
  * Created by Roy on 2018/2/22.
  */
 @Singleton
-public class CacheManager {
+public class ConfigManager {
     private static final String SESSION = "Session";
     private SharedPreferences mSf = null;
 
     @Inject
-    public CacheManager(Context c) {
+    public ConfigManager(Context c) {
         mSf = c.getSharedPreferences(SESSION, Context.MODE_PRIVATE);
     }
 

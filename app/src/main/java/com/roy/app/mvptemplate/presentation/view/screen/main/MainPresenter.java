@@ -1,6 +1,6 @@
 package com.roy.app.mvptemplate.presentation.view.screen.main;
 
-import com.roy.app.mvptemplate.data.cache.CacheManager;
+import com.roy.app.mvptemplate.data.cache.ConfigManager;
 import com.roy.app.mvptemplate.data.network.NetParam;
 import com.roy.app.mvptemplate.domain.interactor.PostQueryUpdateInfo;
 import com.roy.app.mvptemplate.domain.model.NetResponse;
@@ -20,7 +20,7 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
     PostQueryUpdateInfo getVersion;
 
     @Inject
-    CacheManager config;
+    ConfigManager config;
 
     @Inject
     public MainPresenter() {
@@ -28,14 +28,13 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
 
     @Override
     public void startTask() {
-        getVersion.execute(new PresenterSingleObserver<NetResponse<UpdateInfo>>(this){
+        addDisposable(getVersion.execute(new PresenterSingleObserver<NetResponse<UpdateInfo>>(this){
             @Override
             public void onSuccess(NetResponse<UpdateInfo> value) {
                 getView().setText(value.getBody().getUpText());
             }
-        },new NetParam().addParam("locationLabel", "APP:VERSION:CHECK:ANDROID").addParam("memberGroupId", 0));
+        },new NetParam().addParam("locationLabel", "APP:VERSION:CHECK:ANDROID").addParam("memberGroupId", 0)));
     }
-
 
 
 }

@@ -1,7 +1,7 @@
 package com.roy.app.mvptemplate.data.utils;
 
 import com.roy.app.mvptemplate.BuildConfig;
-import com.roy.app.mvptemplate.data.cache.CacheManager;
+import com.roy.app.mvptemplate.data.cache.ConfigManager;
 import com.roy.app.mvptemplate.data.network.ApiService;
 
 /**
@@ -10,7 +10,7 @@ import com.roy.app.mvptemplate.data.network.ApiService;
 
 public class NetUtils {
 
-    public static String getServerHost(CacheManager config) {
+    public static String getServerHost(ConfigManager config) {
         String url;
         if (!BuildConfig.DEBUG) {
             url =  "m.sephora.cn";
@@ -35,7 +35,7 @@ public class NetUtils {
         return url;
     }
 
-    public static String getApiHost(CacheManager config) {
+    public static String getApiHost(ConfigManager config) {
         String url;
         if (!BuildConfig.APP_DEBUG) {
             url =  "api.sephora.cn";
@@ -60,7 +60,7 @@ public class NetUtils {
         return url;
     }
 
-    public static String getApiHostWithScheme(CacheManager config) {
+    public static String getApiHostWithScheme(ConfigManager config) {
         return "https://" + getApiHost(config);
     }
 }

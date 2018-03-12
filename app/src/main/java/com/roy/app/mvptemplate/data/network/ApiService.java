@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.roy.app.mvptemplate.BuildConfig;
-import com.roy.app.mvptemplate.data.cache.CacheManager;
+import com.roy.app.mvptemplate.data.cache.ConfigManager;
 import com.roy.app.mvptemplate.data.network.converter.WebGsonConverterFactory;
 import com.roy.app.mvptemplate.data.network.exception.RetrofitException;
 import com.roy.app.mvptemplate.data.utils.NetUtils;
@@ -56,12 +56,12 @@ public class ApiService {
     private CookieStore store;
     private Retrofit retrofit;
     private OkHttpClient client;
-    private CacheManager config;
+    private ConfigManager config;
     private ConnectivityManager connectivityManager;
     private Gson gson = new Gson();
 
     @Inject
-    public ApiService(CookieStore store,CacheManager config,Context context) {
+    public ApiService(CookieStore store, ConfigManager config, Context context) {
         this.mCookieJar = new AppCookieJar(store);
         this.config = config;
         client = buildClient(mCookieJar);

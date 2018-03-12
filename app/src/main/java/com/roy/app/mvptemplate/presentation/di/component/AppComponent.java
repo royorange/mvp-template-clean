@@ -2,7 +2,7 @@ package com.roy.app.mvptemplate.presentation.di.component;
 
 import android.app.Application;
 
-import com.roy.app.mvptemplate.data.cache.CacheManager;
+import com.roy.app.mvptemplate.data.cache.ConfigManager;
 import com.roy.app.mvptemplate.data.executor.PostExecutionThread;
 import com.roy.app.mvptemplate.data.executor.ThreadExecutor;
 import com.roy.app.mvptemplate.presentation.MainApplication;
@@ -28,7 +28,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AndroidSupportInjectionModule.class})
 public interface AppComponent extends AndroidInjector<MainApplication> {
 
-    CacheManager getCacheManager();
+    ConfigManager getCacheManager();
     ThreadExecutor threadExecutor();
     PostExecutionThread postExecutionThread();
 //    ApiService getApiService();
