@@ -36,5 +36,4 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
         },new NetParam().addParam("locationLabel", "APP:VERSION:CHECK:ANDROID").addParam("memberGroupId", 0)));
     }
 
-
 }

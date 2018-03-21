@@ -24,7 +24,6 @@ public class PresenterSingleObserver<T> extends ResourceSingleObserver<T> {
             return;
         }
         presenter.getView().showServerError();
-        presenter = null;
     }
 
 }

@@ -3,7 +3,6 @@ package com.roy.app.mvptemplate.presentation.view.screen.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.roy.app.mvptemplate.R;
 import com.roy.app.mvptemplate.presentation.MainApplication;
@@ -35,7 +34,6 @@ public class MainActivity extends PureActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("shijc","MainActivity,presenter:"+presenter);
         addFragment(getSupportFragmentManager(),fragment,R.id.container);
     }
 

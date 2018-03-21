@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 
 import com.roy.app.mvptemplate.presentation.navigation.Navigator;
 import com.roy.app.mvptemplate.presentation.view.ui.BaseView;
@@ -49,7 +48,6 @@ public abstract class BaseActivity<P extends BasePresenter,T extends ViewDataBin
         super.onCreate(savedInstanceState);
         bindView();
         if(presenter!=null){
-            Log.i("shijc","BaseActivity,onCreate presenter:"+presenter);
             presenter.takeView(this);
         }
     }
