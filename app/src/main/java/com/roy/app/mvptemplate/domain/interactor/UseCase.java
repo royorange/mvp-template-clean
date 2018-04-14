@@ -74,25 +74,50 @@ public abstract class UseCase<T, Params> {
      */
     public Disposable execute(DisposableObserver<T> observer, Params params) {
         Preconditions.checkNotNull(observer);
-        return this.buildUseCaseObservable(params)
+        Observable<T> observable = this.buildUseCaseObservable(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
-                .observeOn(postExecutionThread.getScheduler())
-                .subscribeWith(observer);
+                .observeOn(postExecutionThread.getScheduler());
+        Disposable disposable = observable.subscribeWith(observer);
+        addDisposable(disposable);
+        return disposable;
     }
 
     public Disposable execute(ResourceSingleObserver<T> observer, Params params) {
-        return buildUseCaseForResult(params)
+        Single<T> single = buildUseCaseForResult(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
-                .observeOn(postExecutionThread.getScheduler())
-                .subscribeWith(observer);
+                .observeOn(postExecutionThread.getScheduler());
+        Disposable disposable = single.subscribeWith(observer);
+        addDisposable(disposable);
+        return disposable;
+    }
+
+    public Disposable execute(ResourceSingleObserver<T> observer) {
+        Single<T> single = buildUseCaseForResult(null)
+                .subscribeOn(Schedulers.from(threadExecutor))
+                .observeOn(postExecutionThread.getScheduler());
+        Disposable disposable = single.subscribeWith(observer);
+        addDisposable(disposable);
+        return disposable;
     }
 
     public Disposable execute(ResourceCompletableObserver observer, Params params) {
-        return buildUseCaseForUpdate(params)
+        Completable completable = buildUseCaseForUpdate(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
-                .observeOn(postExecutionThread.getScheduler())
-                .subscribeWith(observer);
+                .observeOn(postExecutionThread.getScheduler());
+        Disposable disposable = completable.subscribeWith(observer);
+        addDisposable(disposable);
+        return disposable;
     }
+
+    public Disposable execute(ResourceCompletableObserver observer) {
+        Completable completable = buildUseCaseForUpdate(null)
+                .subscribeOn(Schedulers.from(threadExecutor))
+                .observeOn(postExecutionThread.getScheduler());
+        Disposable disposable = completable.subscribeWith(observer);
+        addDisposable(disposable);
+        return disposable;
+    }
+
 
     public Single<T> execute(Consumer<? super T> onSuccess, final Consumer<? super Throwable> onError, Params params) {
         final Single<T> observable = this.buildUseCaseForResult(params)

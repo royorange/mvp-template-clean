@@ -26,5 +26,5 @@ public abstract class ActivityBindingModule {
 
     @ActivityScoped
     @ContributesAndroidInjector
-    abstract SplashActivity splashActivityActivity();
+    abstract SplashActivity splashActivity();
 }
