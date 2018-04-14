@@ -36,6 +36,8 @@ public abstract class UseCase<T, Params> {
     private final ThreadExecutor threadExecutor;
     private final PostExecutionThread postExecutionThread;
     private final CompositeDisposable disposables;
+    private Disposable disposable;
+    private boolean isComplete = true;
 
     UseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread) {
         this.threadExecutor = threadExecutor;
@@ -77,7 +79,7 @@ public abstract class UseCase<T, Params> {
         Observable<T> observable = this.buildUseCaseObservable(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
                 .observeOn(postExecutionThread.getScheduler());
-        Disposable disposable = observable.subscribeWith(observer);
+        this.disposable = observable.subscribeWith(observer);
         addDisposable(disposable);
         return disposable;
     }
@@ -85,26 +87,34 @@ public abstract class UseCase<T, Params> {
     public Disposable execute(ResourceSingleObserver<T> observer, Params params) {
         Single<T> single = buildUseCaseForResult(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
-                .observeOn(postExecutionThread.getScheduler());
-        Disposable disposable = single.subscribeWith(observer);
+                .observeOn(postExecutionThread.getScheduler())
+                .doOnSuccess(t -> isComplete = true)
+                .doOnError(throwable -> isComplete = true);
+        this.disposable = single.subscribeWith(observer);
         addDisposable(disposable);
+        isComplete = false;
         return disposable;
     }
 
     public Disposable execute(ResourceSingleObserver<T> observer) {
         Single<T> single = buildUseCaseForResult(null)
                 .subscribeOn(Schedulers.from(threadExecutor))
-                .observeOn(postExecutionThread.getScheduler());
-        Disposable disposable = single.subscribeWith(observer);
+                .observeOn(postExecutionThread.getScheduler())
+                .doOnSuccess(t -> isComplete = true)
+                .doOnError(throwable -> isComplete = true);
+        this.disposable = single.subscribeWith(observer);
         addDisposable(disposable);
+        isComplete = false;
         return disposable;
     }
 
     public Disposable execute(ResourceCompletableObserver observer, Params params) {
         Completable completable = buildUseCaseForUpdate(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
-                .observeOn(postExecutionThread.getScheduler());
-        Disposable disposable = completable.subscribeWith(observer);
+                .observeOn(postExecutionThread.getScheduler())
+                .doOnComplete(() -> isComplete = true)
+                .doOnError(throwable -> isComplete = true);
+        this.disposable = completable.subscribeWith(observer);
         addDisposable(disposable);
         return disposable;
     }
@@ -112,8 +122,10 @@ public abstract class UseCase<T, Params> {
     public Disposable execute(ResourceCompletableObserver observer) {
         Completable completable = buildUseCaseForUpdate(null)
                 .subscribeOn(Schedulers.from(threadExecutor))
-                .observeOn(postExecutionThread.getScheduler());
-        Disposable disposable = completable.subscribeWith(observer);
+                .observeOn(postExecutionThread.getScheduler())
+                .doOnComplete(() -> isComplete = true)
+                .doOnError(throwable -> isComplete = true);
+        this.disposable = completable.subscribeWith(observer);
         addDisposable(disposable);
         return disposable;
     }
@@ -218,6 +230,14 @@ public abstract class UseCase<T, Params> {
 
         }
         return query;
+    }
+
+    public boolean isDisposed(){
+        return disposables.isDisposed();
+    }
+
+    public boolean isComplete(){
+        return isComplete;
     }
 }
 
