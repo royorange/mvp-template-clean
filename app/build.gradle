@@ -6,7 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION as int
-    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId "com.roy.app.mvptemplate"
@@ -53,6 +52,7 @@ android {
             buildConfigField "boolean", "APP_DEBUG", "false"
         }
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -62,8 +62,8 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:support-v4:26.1.0'
+//    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+//    implementation 'com.android.support:support-v4:26.1.0'
     annotationProcessor presentationDependencies.daggerCompiler
     annotationProcessor presentationDependencies.daggerAndroidProcessor
     implementation presentationDependencies.dagger
@@ -91,6 +91,7 @@ dependencies {
     implementation presentationDependencies.gson
     implementation presentationDependencies.rxbinding
     implementation presentationDependencies.okhttpLoggingInterceptor
+    implementation presentationDependencies.design
     //PermissionsDispatcher has to be above AndroidAnnotations
     implementation(presentationDependencies.permission) {
         exclude module: "support-v13"
@@ -98,6 +99,7 @@ dependencies {
     annotationProcessor presentationDependencies.permissionProcessor
 
     implementation uiDependencies.constraintLayout
+    implementation uiDependencies.baseRecyclerViewAdapter
 
     //data
     annotationProcessor dataDependencies.processor
