@@ -4,12 +4,14 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.roy.app.mvptemplate.R;
+import com.roy.app.mvptemplate.data.cache.ConfigManager;
 import com.roy.app.mvptemplate.presentation.navigation.Navigator;
-import com.roy.app.mvptemplate.presentation.view.ui.BaseView;
 
 import javax.inject.Inject;
 
@@ -29,6 +31,9 @@ public abstract class BaseActivity<P extends BasePresenter,T extends ViewDataBin
 
     @Inject
     protected Navigator navigator;
+
+    @Inject
+    protected ConfigManager config;
 
     protected abstract int getContentViewId();
 
@@ -88,27 +93,35 @@ public abstract class BaseActivity<P extends BasePresenter,T extends ViewDataBin
 
     @Override
     public void showMessage(int msgId) {
-
+        Snackbar.make(mBinding.getRoot(),msgId,Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void showMessage(String msg) {
-
+        Snackbar.make(mBinding.getRoot(),msg,Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void showNetworkError() {
-
+        Snackbar.make(mBinding.getRoot(),getString(R.string.network_failed),Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void showServerError() {
-
+        Snackbar.make(mBinding.getRoot(), R.string.network_failed_server,Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void showAuthorizedError() {
+        config.logout(getApplicationContext());
+    }
 
+    public Navigator getNavigator() {
+        return navigator;
+    }
+
+    public ConfigManager getConfig(){
+        return config;
     }
 
     public void addFragment (@NonNull FragmentManager fragmentManager,

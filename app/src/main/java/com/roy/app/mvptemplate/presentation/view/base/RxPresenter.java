@@ -1,7 +1,5 @@
 package com.roy.app.mvptemplate.presentation.view.base;
 
-import com.roy.app.mvptemplate.presentation.view.ui.BaseView;
-
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 

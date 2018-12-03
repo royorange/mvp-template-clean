@@ -4,8 +4,6 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.wisburg.finance.app.presentation.view.base.ViewDataHolder;
-
 /**
  * Created by Roy on 2018/2/12.
  */

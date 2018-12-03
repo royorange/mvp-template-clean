@@ -1,7 +1,7 @@
 package com.roy.app.mvptemplate.presentation.view.screen.main;
 
 import com.roy.app.mvptemplate.presentation.view.base.BasePresenter;
-import com.roy.app.mvptemplate.presentation.view.ui.BaseView;
+import com.roy.app.mvptemplate.presentation.view.base.BaseView;
 
 /**
  * Created by Roy on 2018/2/18.

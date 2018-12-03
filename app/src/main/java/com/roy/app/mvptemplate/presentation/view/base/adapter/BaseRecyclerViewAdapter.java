@@ -3,7 +3,6 @@ package com.roy.app.mvptemplate.presentation.view.base.adapter;
 import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.wisburg.finance.app.presentation.view.base.SelectableModel;
 
 import java.util.List;
 

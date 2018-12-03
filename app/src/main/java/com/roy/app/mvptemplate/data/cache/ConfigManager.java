@@ -86,4 +86,8 @@ public class ConfigManager {
         }
 
     }
+
+    public void logout(Context context){
+        setUserId(null);
+    }
 }

@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="title_text_size">18sp</dimen>
+    <dimen name="primary_text_size">16sp</dimen>
+    <dimen name="secondary_text_size">14sp</dimen>
+    <dimen name="third_text_size">12sp</dimen>
+
+</resources>
