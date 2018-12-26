@@ -13,7 +13,7 @@ public class NetUtils {
     public static String getServerHost(ConfigManager config) {
         String url;
         if (!BuildConfig.DEBUG) {
-            url =  "m.sephora.cn";
+            url =  "m.xxx.cn";
         }else {
             switch (config.getEnv()){
                 case ApiService.ENV_PRODUCT:
