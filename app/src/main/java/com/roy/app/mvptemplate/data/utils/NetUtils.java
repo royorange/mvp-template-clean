@@ -17,19 +17,19 @@ public class NetUtils {
         }else {
             switch (config.getEnv()){
                 case ApiService.ENV_PRODUCT:
-                    url = "m.sephora.cn";
+                    url = "m.xxx.cn";
                     break;
                 case ApiService.ENV_STAGE:
-                    url =  "stagem.sephora.cn";
+                    url =  "stagem.xxx.cn";
                     break;
                 case ApiService.ENV_EBF:
-                    url = "ebf.sephora.cn";
+                    url = "ebf.xxx.cn";
                     break;
                 case ApiService.ENV_QA2:
-                    url = "testm.sephora.cn";
+                    url = "testm.xxx.cn";
                     break;
                 default:
-                    url = "m.sephora.cn";
+                    url = "m.xxx.cn";
             }
         }
         return url;
@@ -38,23 +38,23 @@ public class NetUtils {
     public static String getApiHost(ConfigManager config) {
         String url;
         if (!BuildConfig.APP_DEBUG) {
-            url =  "api.sephora.cn";
+            url =  "api.xxx.cn";
         }else {
             switch (config.getEnv()){
                 case ApiService.ENV_PRODUCT:
-                    url = "api.sephora.cn";
+                    url = "api.xxx.cn";
                     break;
                 case ApiService.ENV_STAGE:
-                    url =  "stageapi.sephora.cn";
+                    url =  "stageapi.xxx.cn";
                     break;
                 case ApiService.ENV_EBF:
-                    url = "ebfapi.sephora.cn";
+                    url = "ebfapi.xxx.cn";
                     break;
                 case ApiService.ENV_QA2:
-                    url = "test.sephora.cn";
+                    url = "test.xxx.cn";
                     break;
                 default:
-                    url = "api.sephora.cn";
+                    url = "api.xxx.cn";
             }
         }
         return url;
