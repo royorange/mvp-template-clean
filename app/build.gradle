@@ -103,8 +103,8 @@ dependencies {
 
     //data
     annotationProcessor dataDependencies.processor
-    compile dataDependencies.dataBase
-    compile dataDependencies.dataBaseCore
+    implementation dataDependencies.dataBase
+    implementation dataDependencies.dataBaseCore
 
     //test
     testImplementation 'junit:junit:4.12'
